@@ -4,11 +4,11 @@ using UnityEngine.Tilemaps;
 
 public class RandomMapGenerator : MonoBehaviour
 {
-    public Tilemap tilemap; // Tilemap 组件
-    public Tile groundTile; // 草地 Tile
-    public Tile waterTile; // 水 Tile
-    public Tile[] treeTiles; // 树 Tile 数组（四种树）
-    public Tile flowerTile; // 小花 Tile
+    public Tilemap groundTilemap; // 草地和水的 Tilemap
+    public Tilemap treeTilemap;   // 树的 Tilemap
+    public Tile[] groundTile;     // 草地 Tile
+    public Tile waterTile;        // 水 Tile
+    public Tile[] treeTiles;      // 树 Tile 数组（四种树）
 
     private int mapWidth = 16 + 2; // 地图宽度
     private int mapHeight = 16 + 2; // 地图高度
@@ -19,7 +19,7 @@ public class RandomMapGenerator : MonoBehaviour
     void Start()
     {
         GenerateMapData(); // 生成地图数据
-        RenderMap(); // 绘制地图
+        RenderMap();       // 绘制地图
     }
 
     // 生成地图数据
@@ -43,23 +43,44 @@ public class RandomMapGenerator : MonoBehaviour
         int totalGroupsX = (mapWidth - 2) / groupSize; // 不包括边缘
         int totalGroupsY = (mapHeight - 2) / groupSize;
 
-        int waterGroups = UnityEngine.Random.Range(1, 3); // 总水分组数量
-        int treeGroups = UnityEngine.Random.Range(1, 3); // 总树分组数量
+        int waterGroups = UnityEngine.Random.Range(2, 3); // 总水分组数量
+        int treeGroups = UnityEngine.Random.Range(2, 3);  // 总树分组数量
+
+        // 用来标记哪些分组已经被占用
+        bool[,] occupiedGroups = new bool[totalGroupsX, totalGroupsY];
 
         // 随机生成水分组
         for (int i = 0; i < waterGroups; i++)
         {
-            int groupX = UnityEngine.Random.Range(1, totalGroupsX) * groupSize; // 从第1组开始
-            int groupY = UnityEngine.Random.Range(1, totalGroupsY) * groupSize; // 从第1组开始
-            GenerateWaterGroup(groupX, groupY);
+            // 找到一个未被占用的分组
+            int groupX, groupY;
+            do
+            {
+                groupX = UnityEngine.Random.Range(1, totalGroupsX); // 从第1组开始
+                groupY = UnityEngine.Random.Range(1, totalGroupsY); // 从第1组开始
+            } while (occupiedGroups[groupX, groupY]); // 如果这个分组已经被占用，则继续选择
+
+            // 标记该分组为已占用
+            occupiedGroups[groupX, groupY] = true;
+
+            GenerateWaterGroup(groupX * groupSize, groupY * groupSize);
         }
 
         // 随机生成树分组
         for (int i = 0; i < treeGroups; i++)
         {
-            int groupX = UnityEngine.Random.Range(1, totalGroupsX) * groupSize; // 从第1组开始
-            int groupY = UnityEngine.Random.Range(1, totalGroupsY) * groupSize; // 从第1组开始
-            GenerateTreeGroup(groupX, groupY);
+            // 找到一个未被占用的分组
+            int groupX, groupY;
+            do
+            {
+                groupX = UnityEngine.Random.Range(1, totalGroupsX); // 从第1组开始
+                groupY = UnityEngine.Random.Range(1, totalGroupsY); // 从第1组开始
+            } while (occupiedGroups[groupX, groupY]); // 如果这个分组已经被占用，则继续选择
+
+            // 标记该分组为已占用
+            occupiedGroups[groupX, groupY] = true;
+
+            GenerateTreeGroup(groupX * groupSize-1, groupY * groupSize-1);
         }
     }
 
@@ -124,7 +145,8 @@ public class RandomMapGenerator : MonoBehaviour
     // 渲染地图
     void RenderMap()
     {
-        tilemap.ClearAllTiles(); // 清除 Tilemap 中的现有 Tile
+        groundTilemap.ClearAllTiles(); // 清除地形 Tilemap
+        treeTilemap.ClearAllTiles();   // 清除树 Tilemap
 
         // 偏移量，使地图居中
         int offsetX = -mapWidth / 2;
@@ -136,24 +158,29 @@ public class RandomMapGenerator : MonoBehaviour
             {
                 Vector3Int tilePosition = new Vector3Int(x + offsetX, y + offsetY, 0);
 
-                // 绘制草地
-                tilemap.SetTile(tilePosition, groundTile);
+                // 绘制草地或水
+                if (mapData[x, y] == 0) // 草地
+                {
+                    Tile groundType = groundTile[UnityEngine.Random.Range(0, groundTile.Length)];
+                    groundTilemap.SetTile(tilePosition, groundType);
+                }
+                else if (mapData[x, y] == 1) // 水
+                {
+                    groundTilemap.SetTile(tilePosition, waterTile);
+                }
 
-                if (mapData[x, y] == 1) // 水
+                // 绘制树
+                if (mapData[x, y] == 2) // 树
                 {
-                    tilemap.SetTile(tilePosition, waterTile);
-                }
-                else if (mapData[x, y] == 2) // 树
-                {
+                    Tile groundType = groundTile[UnityEngine.Random.Range(0, groundTile.Length)];
+                    groundTilemap.SetTile(tilePosition, groundType);
                     Tile treeType = treeTiles[UnityEngine.Random.Range(0, treeTiles.Length)];
-                    tilemap.SetTile(tilePosition, treeType);
-                }
-                else if (mapData[x, y] == 0) // 草地区域可能出现小花
-                {
-                    if (UnityEngine.Random.Range(0, 10) < 2) // 20% 概率生成小花
-                    {
-                        tilemap.SetTile(tilePosition, flowerTile);
-                    }
+                    treeTilemap.SetTile(tilePosition, treeType);
+
+                    // 动态调整树的 Sorting Order，使 y 轴靠下的树覆盖靠上的树
+                    var tileRenderer = treeTilemap.GetComponent<TilemapRenderer>();
+                    tileRenderer.mode = TilemapRenderer.Mode.Individual; // 确保使用 Individual 模式
+                    tileRenderer.sortingOrder = -(tilePosition.y);       // 按 y 值排序
                 }
             }
         }

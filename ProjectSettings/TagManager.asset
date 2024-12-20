@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: grass
+    uniqueID: 3573566741
+    locked: 0
+  - name: tree
+    uniqueID: 256902539
+    locked: 0
+  - name: card
+    uniqueID: 1197992291
+    locked: 0
