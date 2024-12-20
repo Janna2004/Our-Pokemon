@@ -7,7 +7,7 @@ public class RandomMapGenerator : MonoBehaviour
     public Tilemap groundTilemap; // 草地和水的 Tilemap
     public Tilemap treeTilemap;   // 树的 Tilemap
     public Tile[] groundTile;     // 草地 Tile
-    public Tile waterTile;        // 水 Tile
+    public RuleTile waterRuleTile;// 水 Tile
     public Tile[] treeTiles;      // 树 Tile 数组（四种树）
 
     private int mapWidth = 16 + 2; // 地图宽度
@@ -166,7 +166,7 @@ public class RandomMapGenerator : MonoBehaviour
                 }
                 else if (mapData[x, y] == 1) // 水
                 {
-                    groundTilemap.SetTile(tilePosition, waterTile);
+                    groundTilemap.SetTile(tilePosition, waterRuleTile); // 使用 RuleTile 绘制水
                 }
 
                 // 绘制树

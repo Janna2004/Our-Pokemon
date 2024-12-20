@@ -517,7 +517,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 20bd7a0104abe194db45a9190e567278, type: 2}
   - {fileID: 11400000, guid: 97d46b0e0bcc03e429b3f1b376037e05, type: 2}
   - {fileID: 11400000, guid: 564fa9d0c970fae4cb31444c05e537b0, type: 2}
-  waterTile: {fileID: 11400000, guid: 34d98a1ca8f64604e8bdbe2c3e8e8480, type: 2}
+  waterRuleTile: {fileID: 11400000, guid: 802fa23ff5e469948a4828db353e165d, type: 2}
   treeTiles:
   - {fileID: 11400000, guid: e57e49a97ad6cc14eb958e8aadf79b52, type: 2}
   - {fileID: 11400000, guid: 79b0d4674ad9aab4da7bf3bf9742e52b, type: 2}
