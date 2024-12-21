@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System.Collections.Generic;
 
 public class RandomMapGenerator : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class RandomMapGenerator : MonoBehaviour
     private int mapWidth = 16 + 2; // 地图宽度
     private int mapHeight = 16 + 2; // 地图高度
     private int groupSize = 2; // 每组的大小
+
+    private int minTotlaGroups = 4; // 最小分组数量
+    private int maxTotlaGroups = 8; // 最大分组数量
 
     private byte[,] mapData; // 存储地图数据
 
@@ -43,8 +47,9 @@ public class RandomMapGenerator : MonoBehaviour
         int totalGroupsX = (mapWidth - 2) / groupSize; // 不包括边缘
         int totalGroupsY = (mapHeight - 2) / groupSize;
 
-        int waterGroups = UnityEngine.Random.Range(2, 3); // 总水分组数量
-        int treeGroups = UnityEngine.Random.Range(2, 3);  // 总树分组数量
+        int totlaGroups = UnityEngine.Random.Range(minTotlaGroups, maxTotlaGroups); // 总水分组数量
+        int waterGroups = UnityEngine.Random.Range(0, totlaGroups); // 总水分组数量
+        int treeGroups = totlaGroups - waterGroups; // 树分组数量
 
         // 用来标记哪些分组已经被占用
         bool[,] occupiedGroups = new bool[totalGroupsX, totalGroupsY];
@@ -54,16 +59,19 @@ public class RandomMapGenerator : MonoBehaviour
         {
             // 找到一个未被占用的分组
             int groupX, groupY;
-            do
+            groupX = UnityEngine.Random.Range(1, totalGroupsX); // 从第1组开始
+            groupY = UnityEngine.Random.Range(1, totalGroupsY); // 从第1组开始
+            if (!occupiedGroups[groupX, groupY])
             {
-                groupX = UnityEngine.Random.Range(1, totalGroupsX); // 从第1组开始
-                groupY = UnityEngine.Random.Range(1, totalGroupsY); // 从第1组开始
-            } while (occupiedGroups[groupX, groupY]); // 如果这个分组已经被占用，则继续选择
+                // 标记该分组为已占用
+                occupiedGroups[groupX, groupY] = true;
 
-            // 标记该分组为已占用
-            occupiedGroups[groupX, groupY] = true;
-
-            GenerateWaterGroup(groupX * groupSize, groupY * groupSize);
+                GenerateWaterGroup(groupX * groupSize - 1, groupY * groupSize - 1);
+            }
+            else
+            {
+                i--;
+            }
         }
 
         // 随机生成树分组
@@ -71,18 +79,23 @@ public class RandomMapGenerator : MonoBehaviour
         {
             // 找到一个未被占用的分组
             int groupX, groupY;
-            do
+            groupX = UnityEngine.Random.Range(1, totalGroupsX); // 从第1组开始
+            groupY = UnityEngine.Random.Range(1, totalGroupsY); // 从第1组开始
+
+            if (!occupiedGroups[groupX, groupY])
             {
-                groupX = UnityEngine.Random.Range(1, totalGroupsX); // 从第1组开始
-                groupY = UnityEngine.Random.Range(1, totalGroupsY); // 从第1组开始
-            } while (occupiedGroups[groupX, groupY]); // 如果这个分组已经被占用，则继续选择
+                // 标记该分组为已占用
+                occupiedGroups[groupX, groupY] = true;
 
-            // 标记该分组为已占用
-            occupiedGroups[groupX, groupY] = true;
-
-            GenerateTreeGroup(groupX * groupSize-1, groupY * groupSize-1);
+                GenerateTreeGroup(groupX * groupSize - 1, groupY * groupSize - 1);
+            }
+            else
+            {
+                i--;
+            }
         }
     }
+
 
     // 在边缘放置随机树
     void PlaceEdgeTrees()
@@ -107,13 +120,18 @@ public class RandomMapGenerator : MonoBehaviour
     // 在2*2组内随机生成水
     void GenerateWaterGroup(int startX, int startY)
     {
-        int waterCount = UnityEngine.Random.Range(2, 4);
+        int waterCount = UnityEngine.Random.Range(2, 5);
 
         for (int i = 0; i < waterCount; i++)
         {
             // 确保随机生成的 x 和 y 在地图范围内
             int x = UnityEngine.Random.Range(startX, Mathf.Min(startX + groupSize, mapWidth - 1));
             int y = UnityEngine.Random.Range(startY, Mathf.Min(startY + groupSize, mapHeight - 1));
+
+            if (mapData[x, y] == 1)
+            {
+                i--; // 如果已经是水，则重新生成
+            }
 
             // 只有在合法范围内时才设置
             if (x >= 1 && x < mapWidth - 1 && y >= 1 && y < mapHeight - 1)
@@ -126,13 +144,18 @@ public class RandomMapGenerator : MonoBehaviour
     // 在2*2组内随机生成树
     void GenerateTreeGroup(int startX, int startY)
     {
-        int treeCount = UnityEngine.Random.Range(2, 4);
+        int treeCount = UnityEngine.Random.Range(2, 5);
 
         for (int i = 0; i < treeCount; i++)
         {
             // 确保随机生成的 x 和 y 在地图范围内
             int x = UnityEngine.Random.Range(startX, Mathf.Min(startX + groupSize, mapWidth - 1));
             int y = UnityEngine.Random.Range(startY, Mathf.Min(startY + groupSize, mapHeight - 1));
+
+            if (mapData[x, y] == 2)
+            {
+                i--; // 如果已经是树，则重新生成
+            }
 
             // 只有在合法范围内时才设置
             if (x >= 1 && x < mapWidth - 1 && y >= 1 && y < mapHeight - 1)
