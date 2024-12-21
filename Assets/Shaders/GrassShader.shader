@@ -1,8 +1,12 @@
-Shader "Custom/FracColorQuad"
+Shader "Custom/GrassOverlay"
 {
+    Properties
+    {
+        _Color("Color", Color) = (0, 1, 0, 1) // 绿色
+    }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "Queue" = "Overlay" "RenderType" = "Transparent" }
         Pass
         {
             ZWrite Off
@@ -13,43 +17,31 @@ Shader "Custom/FracColorQuad"
             #pragma vertex vert
             #pragma fragment frag
 
-            // 定义输入结构（appdata）
+            fixed4 _Color;
+
             struct appdata
             {
-                float4 vertex : POSITION; // 顶点位置
+                float4 vertex : POSITION;
+                float2 uv : TEXCOORD0;
             };
 
-            // 定义顶点到片段的输出结构
             struct v2f
             {
-                float4 vertex : SV_POSITION; // 裁剪空间的顶点位置
-                float2 uv : TEXCOORD0;       // UV 坐标
+                float2 uv : TEXCOORD0;
+                float4 pos : SV_POSITION;
             };
 
-            // 顶点着色器
             v2f vert(appdata v)
             {
                 v2f o;
-
-                // 通过 Unity 内置的 OrthoParams 获取相机的正交投影范围
-                // unity_OrthoParams.xy = (宽度, 高度)
-                float2 scale = unity_OrthoParams.xy;
-
-                // 顶点位置
-                o.vertex = UnityObjectToClipPos(v.vertex);
-
-                // UV 坐标映射到相机的正交投影范围
-                o.uv = v.vertex.xy * 0.5 * scale + 0.5;
-
+                o.pos = UnityObjectToClipPos(v.vertex); // 将顶点转换为屏幕空间
+                o.uv = v.uv;
                 return o;
             }
 
-            // 片段着色器
             fixed4 frag(v2f i) : SV_Target
             {
-                // 使用 frac 生成周期性 UV 颜色
-                fixed4 col = fixed4(frac(i.uv), 0.0, 1.0);
-                return col;
+                return _Color; // 输出绿色
             }
             ENDCG
         }
