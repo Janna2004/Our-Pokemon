@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Grass
+  - Tree
+  - Water
+  - Card
   layers:
   - Default
   - TransparentFX
@@ -46,6 +50,9 @@ TagManager:
     locked: 0
   - name: tree
     uniqueID: 256902539
+    locked: 0
+  - name: board
+    uniqueID: 1939668201
     locked: 0
   - name: card
     uniqueID: 1197992291
