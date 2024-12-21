@@ -7,6 +7,8 @@ public class RandomMapGenerator : MonoBehaviour
 {
     public Tilemap groundTilemap; // 草地和水的 Tilemap
     public Tilemap treeTilemap;   // 树的 Tilemap
+    public Tilemap edgeTilemap;   // 边缘的 Tilemap
+
     public Tile[] groundTile;     // 草地 Tile
     public RuleTile waterRuleTile;// 水 Tile
     public Tile[] treeTiles;      // 树 Tile 数组（四种树）
@@ -174,6 +176,7 @@ public class RandomMapGenerator : MonoBehaviour
     {
         groundTilemap.ClearAllTiles(); // 清除地形 Tilemap
         treeTilemap.ClearAllTiles();   // 清除树 Tilemap
+        edgeTilemap.ClearAllTiles();   // 清除边缘 Tilemap
 
         // 偏移量，使地图居中
         int offsetX = -mapWidth / 2;
@@ -202,7 +205,14 @@ public class RandomMapGenerator : MonoBehaviour
                     Tile groundType = groundTile[UnityEngine.Random.Range(0, groundTile.Length)];
                     groundTilemap.SetTile(tilePosition, groundType);
                     Tile treeType = treeTiles[UnityEngine.Random.Range(0, treeTiles.Length)];
-                    treeTilemap.SetTile(tilePosition, treeType);
+                    if (x == 0 || x == mapWidth - 1 || y == 0 || y == mapWidth - 1)
+                    {
+                        treeTilemap.SetTile(tilePosition, treeType);
+                    }
+                    else
+                    {
+                        edgeTilemap.SetTile(tilePosition, treeType);
+                    }
 
                     // 动态调整树的 Sorting Order，使 y 轴靠下的树覆盖靠上的树
                     var tileRenderer = treeTilemap.GetComponent<TilemapRenderer>();

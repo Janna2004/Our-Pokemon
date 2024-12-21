@@ -50,3 +50,6 @@ TagManager:
   - name: card
     uniqueID: 1197992291
     locked: 0
+  - name: edge
+    uniqueID: 955635621
+    locked: 0
