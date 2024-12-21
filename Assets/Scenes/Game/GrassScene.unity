@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 611804640}
   - component: {fileID: 611804642}
   - component: {fileID: 611804641}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,7 +355,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 256902539
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: -99
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -457,7 +457,7 @@ GameObject:
   - component: {fileID: 882566286}
   - component: {fileID: 882566285}
   - component: {fileID: 882566287}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -523,6 +523,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 79b0d4674ad9aab4da7bf3bf9742e52b, type: 2}
   - {fileID: 11400000, guid: fd0f95f1b712d934b86df94043642ac8, type: 2}
   - {fileID: 11400000, guid: 9070d3b122711044391893ba403e4d8d, type: 2}
+  boardManager: {fileID: 0}
 --- !u!1 &1274810470
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,7 +620,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -721400555
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: -99
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
