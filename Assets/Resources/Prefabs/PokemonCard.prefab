@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1711822027862103304}
   - component: {fileID: 8020117310803845842}
   - component: {fileID: 4350057443146448932}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: hp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 1e95a45065e2bfc439809d3f425fb8d0, type: 2}
-    m_FontSize: 1
+    m_FontSize: 5
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 452360961919668304}
   - component: {fileID: 7345554489009510545}
   - component: {fileID: 1519584656734691219}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 1e95a45065e2bfc439809d3f425fb8d0, type: 2}
-    m_FontSize: 1
+    m_FontSize: 5
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -171,7 +171,10 @@ GameObject:
   - component: {fileID: 6711758672138838847}
   - component: {fileID: 9073035506341139651}
   - component: {fileID: 6713678465907845469}
-  m_Layer: 5
+  - component: {fileID: 831780390238790565}
+  - component: {fileID: 6895372840490395697}
+  - component: {fileID: 5984147358031505718}
+  m_Layer: 0
   m_Name: PokemonCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,8 +198,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.062194824, y: -0.062194824}
-  m_SizeDelta: {x: 8, y: 8}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8501793961263276168
 Canvas:
@@ -265,6 +268,76 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardFront: {fileID: 5358169115161711519}
   cardBack: {fileID: 195563044600944805}
+--- !u!114 &831780390238790565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2377057630135298558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24467c763c47884991a8b90e1858826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showPointer: 1
+--- !u!114 &6895372840490395697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2377057630135298558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde8fc90e34a7a94fb55c4fec079590a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &5984147358031505718
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2377057630135298558}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 40, y: 40}
+  m_EdgeRadius: 0
 --- !u!1 &2663160192984293520
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,7 +349,7 @@ GameObject:
   - component: {fileID: 5016219385906952989}
   - component: {fileID: 6594341188579277599}
   - component: {fileID: 4920248996785948259}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: attackGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -351,7 +424,7 @@ GameObject:
   - component: {fileID: 6498454039520639316}
   - component: {fileID: 743165883182749693}
   - component: {fileID: 5722963475741266581}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +497,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5358169115161711519}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: CardFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +540,7 @@ GameObject:
   - component: {fileID: 6121673247499236339}
   - component: {fileID: 5996069337009084189}
   - component: {fileID: 5865606200214211511}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -544,7 +617,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 195563044600944805}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: CardBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -582,7 +655,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4415019392104194674}
   - component: {fileID: 1928333601938746164}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: CardPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -629,7 +702,7 @@ GameObject:
   - component: {fileID: 6142532646512212982}
   - component: {fileID: 7132978478241495744}
   - component: {fileID: 7119852257935727171}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -704,7 +777,7 @@ GameObject:
   - component: {fileID: 702547689697126288}
   - component: {fileID: 3414041018939740084}
   - component: {fileID: 1177397464581424892}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: pokemon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -779,7 +852,7 @@ GameObject:
   - component: {fileID: 7443406057128455794}
   - component: {fileID: 3862730554469472126}
   - component: {fileID: 5127616272086325052}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -835,7 +908,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 1e95a45065e2bfc439809d3f425fb8d0, type: 2}
-    m_FontSize: 1
+    m_FontSize: 5
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1

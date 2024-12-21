@@ -11,6 +11,8 @@ public class RandomMapGenerator : MonoBehaviour
     public RuleTile waterRuleTile;// 水 Tile
     public Tile[] treeTiles;      // 树 Tile 数组（四种树）
 
+    public BoardManager boardManager;
+
     private int mapWidth = 16 + 2; // 地图宽度
     private int mapHeight = 16 + 2; // 地图高度
     private int groupSize = 2; // 每组的大小
@@ -20,14 +22,16 @@ public class RandomMapGenerator : MonoBehaviour
 
     private byte[,] mapData; // 存储地图数据
 
-    void Start()
+    private void Start()
     {
+        boardManager = BoardManager.instance;
         GenerateMapData(); // 生成地图数据
         RenderMap();       // 绘制地图
+        boardManager.UpdateCells(mapData);
     }
 
     // 生成地图数据
-    void GenerateMapData()
+    private void GenerateMapData()
     {
         mapData = new byte[mapWidth, mapHeight];
 
@@ -98,7 +102,7 @@ public class RandomMapGenerator : MonoBehaviour
 
 
     // 在边缘放置随机树
-    void PlaceEdgeTrees()
+    private void PlaceEdgeTrees()
     {
         for (int x = 0; x < mapWidth; x++)
         {
@@ -118,7 +122,7 @@ public class RandomMapGenerator : MonoBehaviour
     }
 
     // 在2*2组内随机生成水
-    void GenerateWaterGroup(int startX, int startY)
+    private void GenerateWaterGroup(int startX, int startY)
     {
         int waterCount = UnityEngine.Random.Range(2, 5);
 
@@ -142,7 +146,7 @@ public class RandomMapGenerator : MonoBehaviour
     }
 
     // 在2*2组内随机生成树
-    void GenerateTreeGroup(int startX, int startY)
+    private void GenerateTreeGroup(int startX, int startY)
     {
         int treeCount = UnityEngine.Random.Range(2, 5);
 
@@ -166,7 +170,7 @@ public class RandomMapGenerator : MonoBehaviour
     }
 
     // 渲染地图
-    void RenderMap()
+    private void RenderMap()
     {
         groundTilemap.ClearAllTiles(); // 清除地形 Tilemap
         treeTilemap.ClearAllTiles();   // 清除树 Tilemap
