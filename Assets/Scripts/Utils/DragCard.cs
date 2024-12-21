@@ -6,6 +6,7 @@ public class DragCard : DragAction
 {
     private BoardManager boardManager;
     private Vector3 startPos;
+    private int startCellIdx;
 
     private void Start()
     {
@@ -18,6 +19,7 @@ public class DragCard : DragAction
         gameObject.layer = 2;
         startPos = transform.position;
         transform.DOScale(1.2f, 0.5f);
+        startCellIdx = boardManager.OnCardStartDrag(transform);
     }
 
     public override void OnEndDrag()
@@ -25,7 +27,7 @@ public class DragCard : DragAction
         // µ÷»Ødefault²ã
         gameObject.layer = 0;
         transform.DOScale(1f, 0.5f);
-        if (!boardManager.AddCard(transform))
+        if (!boardManager.OnCardEndDrag(transform, startCellIdx))
         {
             transform.DOMove(startPos, 0.5f);
         }

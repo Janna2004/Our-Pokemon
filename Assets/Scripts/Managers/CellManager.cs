@@ -3,8 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum CellType
+{
+    Grass,
+    Tree,
+    Water
+}
+
+public enum CellState
+{
+    Empty,
+    Occupied,
+    Blocked
+}
+
 public class CellManager : MonoBehaviour
 {
+    public CellType cellType = CellType.Grass;
+    public CellState cellState = CellState.Empty;
     public Color filterColor = new Color(1, 1, 1, 0.3f);
     private Image FilterImg;
 

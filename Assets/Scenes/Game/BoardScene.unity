@@ -205,7 +205,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &31193912
 MonoBehaviour:
@@ -482,7 +482,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &82282118
 MonoBehaviour:
@@ -618,7 +618,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &97204273
 MonoBehaviour:
@@ -822,7 +822,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &114983548
 MonoBehaviour:
@@ -958,7 +958,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &115709247
 MonoBehaviour:
@@ -1235,7 +1235,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &140072925
 MonoBehaviour:
@@ -1371,7 +1371,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &163158282
 MonoBehaviour:
@@ -1507,7 +1507,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &172140815
 MonoBehaviour:
@@ -1784,7 +1784,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &192789404
 MonoBehaviour:
@@ -2061,7 +2061,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &261998363
 MonoBehaviour:
@@ -2338,7 +2338,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &319812393
 MonoBehaviour:
@@ -3038,7 +3038,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &347182221
 MonoBehaviour:
@@ -3456,7 +3456,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &364310130
 MonoBehaviour:
@@ -4015,7 +4015,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &448163356
 MonoBehaviour:
@@ -4151,7 +4151,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &456145621
 MonoBehaviour:
@@ -4287,7 +4287,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &488682391
 MonoBehaviour:
@@ -4423,7 +4423,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &511782104
 MonoBehaviour:
@@ -4700,7 +4700,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &550459586
 MonoBehaviour:
@@ -4977,7 +4977,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &580186252
 MonoBehaviour:
@@ -5113,7 +5113,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &583774216
 MonoBehaviour:
@@ -5531,7 +5531,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &650837524
 MonoBehaviour:
@@ -6231,7 +6231,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &739307307
 MonoBehaviour:
@@ -6790,7 +6790,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &791188808
 MonoBehaviour:
@@ -7349,7 +7349,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &830663982
 MonoBehaviour:
@@ -7767,7 +7767,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &869027451
 MonoBehaviour:
@@ -8326,7 +8326,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &916518940
 MonoBehaviour:
@@ -8462,7 +8462,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &938579966
 MonoBehaviour:
@@ -9162,7 +9162,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1004112045
 MonoBehaviour:
@@ -9298,7 +9298,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1031086897
 MonoBehaviour:
@@ -9434,7 +9434,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1061385405
 MonoBehaviour:
@@ -9570,7 +9570,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1083698995
 MonoBehaviour:
@@ -9847,7 +9847,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1101726334
 MonoBehaviour:
@@ -9983,7 +9983,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1159862104
 MonoBehaviour:
@@ -10260,7 +10260,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1202259690
 MonoBehaviour:
@@ -10537,7 +10537,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1255958871
 MonoBehaviour:
@@ -10673,7 +10673,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1276749520
 MonoBehaviour:
@@ -11091,7 +11091,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1318282555
 MonoBehaviour:
@@ -11227,7 +11227,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1333005977
 MonoBehaviour:
@@ -11459,7 +11459,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 8, y: 8}
+  m_CellSize: {x: 40, y: 40}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -11544,7 +11544,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 64, y: 64}
+  m_SizeDelta: {x: 320, y: 320}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1365077475
 MonoBehaviour:
@@ -11558,8 +11558,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39617a5f8ead541499ffc6d3b87af99f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellSize: 8
-  cellCount: 64
+  cellSize: 40
+  boardSize: 8
 --- !u!1 &1419693693
 GameObject:
   m_ObjectHideFlags: 0
@@ -11643,7 +11643,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1419693696
 MonoBehaviour:
@@ -11779,7 +11779,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1421133457
 MonoBehaviour:
@@ -11915,7 +11915,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1422619037
 MonoBehaviour:
@@ -12615,7 +12615,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1499521599
 MonoBehaviour:
@@ -12892,7 +12892,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1581959120
 MonoBehaviour:
@@ -13079,7 +13079,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!1 &1636872632
 GameObject:
@@ -13446,7 +13446,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1662670847
 MonoBehaviour:
@@ -13723,7 +13723,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1701179736
 MonoBehaviour:
@@ -13859,7 +13859,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1722267262
 MonoBehaviour:
@@ -14136,7 +14136,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1736049548
 MonoBehaviour:
@@ -14695,7 +14695,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1748740909
 MonoBehaviour:
@@ -14831,7 +14831,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1753126720
 MonoBehaviour:
@@ -14967,7 +14967,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1792937699
 MonoBehaviour:
@@ -15103,7 +15103,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1794171529
 MonoBehaviour:
@@ -15239,7 +15239,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1794811939
 MonoBehaviour:
@@ -15375,7 +15375,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1809917505
 MonoBehaviour:
@@ -15511,7 +15511,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1817207002
 MonoBehaviour:
@@ -15788,7 +15788,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1883805355
 MonoBehaviour:
@@ -15924,7 +15924,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1901040150
 MonoBehaviour:
@@ -16038,7 +16038,7 @@ Camera:
   far clip plane: 1000
   field of view: 150
   orthographic: 1
-  orthographic size: 40
+  orthographic size: 200
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -16152,7 +16152,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1932094796
 MonoBehaviour:
@@ -16288,7 +16288,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1940564056
 MonoBehaviour:
@@ -16565,7 +16565,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &1961878469
 MonoBehaviour:
@@ -16842,7 +16842,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &2003731863
 MonoBehaviour:
@@ -17036,37 +17036,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &2015781145
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2015781146}
-  m_Layer: 0
-  m_Name: GlobalSettings
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2015781146
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2015781145}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.334124, y: -4.488378, z: 0.015780615}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2020004818
 GameObject:
   m_ObjectHideFlags: 0
@@ -17291,7 +17260,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &2047431085
 MonoBehaviour:
@@ -17485,6 +17454,107 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1001 &2074745574
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2377057630135298558, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
+      propertyPath: m_Name
+      value: PokemonCard
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -303.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -161.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8501793961263276168, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
 --- !u!1 &2091728115
 GameObject:
   m_ObjectHideFlags: 0
@@ -17709,7 +17779,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &2104779484
 MonoBehaviour:
@@ -17986,7 +18056,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 40, y: 40}
   m_EdgeRadius: 0
 --- !u!114 &2131216936
 MonoBehaviour:
@@ -18039,155 +18109,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2131216933}
   m_CullTransparentMesh: 1
---- !u!1001 &2132764536
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 778721019655256304, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2221077768792816880, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377057630135298558, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_Name
-      value: PokemonCard
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377057630135298558, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2663160192984293520, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3246013997862948212, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3437830045532098752, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5813849663996054001, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -57.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -29.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6219964052035273211, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6430883084118259251, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6899902143751039942, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7032489346344938031, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7386033060891493061, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7922755094587314838, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8501793961263276168, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 95256fe7479dc4848a6545e3840dd8ed, type: 3}
 --- !u!1 &2139123555
 GameObject:
   m_ObjectHideFlags: 0
@@ -18334,7 +18255,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1909439335}
-  - {fileID: 2132764536}
+  - {fileID: 2074745574}
   - {fileID: 1365077474}
-  - {fileID: 2015781146}
   - {fileID: 111744825}
