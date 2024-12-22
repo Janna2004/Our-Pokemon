@@ -932,6 +932,10 @@ PrefabInstance:
       propertyPath: indexToLoad
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114851442015718610, guid: d1086bdb8c797b941a8e00b72210ba49, type: 3}
+      propertyPath: sceneToLoad
+      value: GameScene
+      objectReference: {fileID: 0}
     - target: {fileID: 114968128994587846, guid: d1086bdb8c797b941a8e00b72210ba49, type: 3}
       propertyPath: m_Sprite
       value: 

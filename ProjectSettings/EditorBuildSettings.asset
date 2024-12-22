@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Game/GrassScene.unity
+    path: Assets/Scenes/Menus/MainScene.unity
+    guid: 7a9bb8fac90a61043817e93c6b9f02a6
+  - enabled: 1
+    path: Assets/Scenes/Game/GameScene.unity
+    guid: a17aefbfdd4b95e48ab2659fa611ba56
+  - enabled: 1
+    path: Assets/Scenes/Game/GroundScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Game/BoardScene.unity
+    guid: a2905138d6775334f8448e2dbbde78da
   m_configObjects: {}

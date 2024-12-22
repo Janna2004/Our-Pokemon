@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public enum Elemental
 {
@@ -11,6 +9,18 @@ public enum Elemental
     Electric,
     Flying,
     Rock
+}
+
+public enum ActiveSkill
+{
+    None, // 无技能
+    Throw // 投掷
+}
+
+public enum PassiveSkill
+{
+    None, // 无技能
+    Shield // 护盾
 }
 
 // 元素属性和背景图片的映射关系
@@ -35,11 +45,18 @@ public class CardAsset : ScriptableObject
 
     public Sprite pokemonImg;
     public Elemental elemental;
-    public string[] skills;
+
+    [Header("Skills")]
+    public ActiveSkill activeSkill;
+
+    public PassiveSkill passiveSkill;
 
     [Header("Card Stats")]
     public int hp;
 
     public int attack;
     public int level;
+
+    [Header("Attack Range")]
+    public List<Vector2Int> attackRange = new List<Vector2Int>();
 }

@@ -19,3 +19,4 @@ MonoBehaviour:
   hp: 8
   attack: 7
   level: 2
+  attackRange: []

@@ -21,16 +21,13 @@ public class CellManager : MonoBehaviour
 {
     public CellType cellType = CellType.Grass;
     public CellState cellState = CellState.Empty;
-    public Color filterColor = new Color(1, 1, 1, 0.3f);
-    private Image FilterImg;
+    private CellController cellController;
 
     // Start is called before the first frame update
     private void Start()
     {
-        Transform filterCanvas = transform.Find("FilterCanvas");
-        FilterImg = filterCanvas.GetComponentInChildren<Image>();
-        FilterImg.color = new Color(1, 1, 1, 0);
-        FilterImg.gameObject.SetActive(false);
+        cellController = GetComponent<CellController>();
+        cellController.SetFilterColor(new Color(1, 1, 1, 0.5f));
     }
 
     // Update is called once per frame
@@ -40,13 +37,11 @@ public class CellManager : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        FilterImg.color = filterColor;
-        FilterImg.gameObject.SetActive(true);
+        cellController.SetFilterActive(true);
     }
 
     private void OnMouseExit()
     {
-        FilterImg.color = new Color(1, 1, 1, 0);
-        FilterImg.gameObject.SetActive(false);
+        cellController.SetFilterActive(false);
     }
 }
