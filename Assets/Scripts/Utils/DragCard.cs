@@ -9,6 +9,7 @@ public class DragCard : DragAction
     public AudioSource source;
 
     private BoardManager boardManager;
+    private BoardController boardController;
     private CardController cardController;
     private Vector3 startPos;
     private int startCellIdx;
