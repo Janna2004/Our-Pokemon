@@ -207,11 +207,11 @@ public class RandomMapGenerator : MonoBehaviour
                     Tile treeType = treeTiles[UnityEngine.Random.Range(0, treeTiles.Length)];
                     if (x == 0 || x == mapWidth - 1 || y == 0 || y == mapWidth - 1)
                     {
-                        treeTilemap.SetTile(tilePosition, treeType);
+                        edgeTilemap.SetTile(tilePosition, treeType);
                     }
                     else
                     {
-                        edgeTilemap.SetTile(tilePosition, treeType);
+                        treeTilemap.SetTile(tilePosition, treeType);
                     }
 
                     // 动态调整树的 Sorting Order，使 y 轴靠下的树覆盖靠上的树

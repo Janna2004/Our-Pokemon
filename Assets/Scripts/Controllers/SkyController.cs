@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class SkyController : MonoBehaviour
 {
+    // 输入参数 - 各个 Sky 对象
     public GameObject morning; // 引用 morning 对象
     public GameObject afternoon; // 引用 afternoon 对象
     public GameObject night; // 引用 night 对象
 
-    private GameObject selectedSky; // 当前选择的对象
-    private Transform layer01, layer02, layer03; // 子层
+    // 输入参数 - 各子层
+    public Transform morningLayer01, morningLayer02, morningLayer03; // Morning 子层
+    public Transform afternoonLayer01, afternoonLayer02, afternoonLayer03; // Afternoon 子层
+    public Transform nightLayer01, nightLayer02; // Night 子层
+
+    private GameObject selectedSky; // 当前选择的 Sky 对象
+    private Transform layer01, layer02, layer03; // 动态绑定的子层
 
     private float time = 0f; // 用于正弦函数的时间变量
-    private const float floatSpeed = 200f; // 浮动速度
-    private const float floatAmplitude = 50f; // 浮动振幅
+    private const float floatSpeed = 10f; // 浮动速度
+    private const float floatAmplitude = 4f; // 浮动振幅
 
     void Start()
     {
@@ -23,12 +29,20 @@ public class SkyController : MonoBehaviour
         {
             case 0:
                 selectedSky = morning;
+                layer01 = morningLayer01;
+                layer02 = morningLayer02;
+                layer03 = morningLayer03;
                 break;
             case 1:
                 selectedSky = afternoon;
+                layer01 = afternoonLayer01;
+                layer02 = afternoonLayer02;
+                layer03 = afternoonLayer03;
                 break;
             case 2:
                 selectedSky = night;
+                layer01 = nightLayer01;
+                layer02 = nightLayer02;
                 break;
         }
 
@@ -36,23 +50,11 @@ public class SkyController : MonoBehaviour
         morning.SetActive(selectedSky == morning);
         afternoon.SetActive(selectedSky == afternoon);
         night.SetActive(selectedSky == night);
-
-        // 获取子层
-        if (selectedSky == morning || selectedSky == afternoon)
-        {
-            layer01 = selectedSky.transform.Find("layer01");
-            layer02 = selectedSky.transform.Find("layer02");
-            layer03 = selectedSky.transform.Find("layer03");
-        }
-        else if (selectedSky == night)
-        {
-            layer01 = selectedSky.transform.Find("layer01");
-        }
     }
 
     void Update()
     {
-        time += Time.deltaTime;
+        time += Time.deltaTime; // 更新时间变量
 
         if (selectedSky == morning || selectedSky == afternoon)
         {

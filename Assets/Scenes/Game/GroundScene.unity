@@ -341,7 +341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &94011244
 Transform:
   m_ObjectHideFlags: 0
@@ -894,6 +894,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 733676309}
+  - component: {fileID: 733676310}
   m_Layer: 0
   m_Name: sky
   m_TagString: Untagged
@@ -919,6 +920,29 @@ Transform:
   - {fileID: 388763353}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &733676310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733676308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b93b8dc3e0bea74f86e084c739283a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  morning: {fileID: 94011243}
+  afternoon: {fileID: 1570280982}
+  night: {fileID: 388763352}
+  morningLayer01: {fileID: 2110171735}
+  morningLayer02: {fileID: 1082248018}
+  morningLayer03: {fileID: 292351234}
+  afternoonLayer01: {fileID: 57238218}
+  afternoonLayer02: {fileID: 1082248018}
+  afternoonLayer03: {fileID: 837785517}
+  nightLayer01: {fileID: 1523205057}
+  nightLayer02: {fileID: 998185603}
 --- !u!1 &837785516
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,7 +1015,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 6fc934c28f4a61548a11c8c0767f4834, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1239,7 +1263,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 133ff4e02187f97458c0d10ac3ab15bc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
