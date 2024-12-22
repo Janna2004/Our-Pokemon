@@ -4,15 +4,23 @@ using DG.Tweening;
 
 public class DragCard : DragAction
 {
-    private BoardManager boardManager;
+    private BoardController boardController;
     private CardController cardController;
     private Vector3 startPos;
     private int startCellIdx;
 
     private void Start()
     {
-        boardManager = BoardManager.instance;
+        boardController = BoardManager.instance.boardController;
         cardController = GetComponent<CardController>();
+    }
+
+    public override bool CanDrag
+    {
+        get
+        {
+            return cardController.IsOnBoard() || boardController.CanAddCard(cardController.owner, cardController.cardAsset.level);
+        }
     }
 
     public override void OnStartDrag()
@@ -21,7 +29,7 @@ public class DragCard : DragAction
         gameObject.layer = 2;
         startPos = transform.position;
         transform.DOScale(1.2f, 0.5f);
-        startCellIdx = boardManager.boardController.OnCardStartDrag(transform);
+        startCellIdx = boardController.OnCardStartDrag(transform);
         cardController.RotateToFront(false);
     }
 
@@ -30,7 +38,7 @@ public class DragCard : DragAction
         // µ÷»Ødefault²ã
         gameObject.layer = 0;
         transform.DOScale(1f, 0.5f);
-        if (!boardManager.boardController.OnCardEndDrag(transform, startCellIdx))
+        if (!boardController.OnCardEndDrag(transform, startCellIdx))
         {
             transform.DOMove(startPos, 0.5f);
         }

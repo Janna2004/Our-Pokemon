@@ -17,17 +17,50 @@ public enum CellState
     Blocked
 }
 
+// 映射单元格状态和颜色
+public class CellColor
+{
+    public static Dictionary<CellState, Color> cellColor = new Dictionary<CellState, Color>
+    {
+        {CellState.Empty, new Color(1, 1, 1, 0.5f)},
+        {CellState.Occupied, new Color(1, 0, 0, 0.5f)},
+        {CellState.Blocked, new Color(1, 0, 0, 0.5f)}
+    };
+}
+
 public class CellManager : MonoBehaviour
 {
     public CellType cellType = CellType.Grass;
-    public CellState cellState = CellState.Empty;
+    public CellState _cellState = CellState.Empty;
+
+    public CellState cellState
+    {
+        set
+        {
+            if (_cellState != value)
+            {
+                _cellState = value;
+                cellController.SetFilterColor(CellColor.cellColor[_cellState]);
+            }
+        }
+        get
+        {
+            return _cellState;
+        }
+    }
+
     private CellController cellController;
+
+    // Awake is called when the script instance is being loaded.
+    private void Awake()
+    {
+        cellController = GetComponent<CellController>();
+        cellController.SetFilterColor(new Color(1, 1, 1, 0.5f));
+    }
 
     // Start is called before the first frame update
     private void Start()
     {
-        cellController = GetComponent<CellController>();
-        cellController.SetFilterColor(new Color(1, 1, 1, 0.5f));
     }
 
     // Update is called once per frame

@@ -1,3 +1,4 @@
+using DG.Tweening.Core.Easing;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -9,7 +10,10 @@ public class BoardController : MonoBehaviour
     public int cellSize;
     public int boardSize;
     public int CellCount => boardSize * boardSize;
+    private GameManager gameManager;
     private Transform[] cellTransforms;
+    private int[,] cardNumEachPlayer;
+    public int[] maxCardNumInLevel = { 0, 1, 2, 3 };
 
     // Awake is called when the script instance is being loaded.
     private void Awake()
@@ -24,6 +28,15 @@ public class BoardController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        gameManager = GameManager.instance;
+        cardNumEachPlayer = new int[3, 4];
+        for (int i = 1; i <= 2; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                cardNumEachPlayer[i, j] = 0;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -71,6 +84,7 @@ public class BoardController : MonoBehaviour
         {
             return false;
         }
+
         if (startCellIdx != -1)
         {
             CellManager startCellManager = cellTransforms[startCellIdx].GetComponent<CellManager>();
@@ -91,6 +105,33 @@ public class BoardController : MonoBehaviour
         CellManager cellManager = cellTransforms[cellIdx].GetComponent<CellManager>();
         cellManager.cellState = CellState.Occupied;
         return true;
+    }
+
+    // 添加卡片到棋盘
+    public void AddCardForPlayer(byte player, int level)
+    {
+        cardNumEachPlayer[player, level]++;
+        bool allFull = true;
+        for (int i = 1; i <= 2; i++)
+        {
+            for (int j = 1; j <= 3; j++)
+            {
+                if (cardNumEachPlayer[i, j] < maxCardNumInLevel[j])
+                {
+                    allFull = false;
+                    break;
+                }
+            }
+        }
+        if (allFull)
+        {
+            gameManager.SwitchPlayer();
+        }
+    }
+
+    public bool CanAddCard(byte player, int level)
+    {
+        return cardNumEachPlayer[player, level] < maxCardNumInLevel[level];
     }
 
     private bool EmptyAtIdx(int cellIdx)
@@ -129,13 +170,24 @@ public class BoardController : MonoBehaviour
     }
 
     // 禁用指定位置的单元格
-    public void DisableCell(int cellIdx)
+    public void BlockArea(byte player)
     {
-        if (cellIdx == -1)
+        int startIdx = (player - 1) * CellCount / 2;
+        int endIdx = player * CellCount / 2;
+        for (int i = startIdx; i < endIdx; i++)
         {
-            return;
+            cellTransforms[i].GetComponent<CellManager>().cellState = CellState.Blocked;
         }
-        CellManager cellManager = cellTransforms[cellIdx].GetComponent<CellManager>();
-        cellManager.cellState = CellState.Blocked;
+    }
+
+    // 启用指定位置的单元格
+    public void UnblockArea(byte player)
+    {
+        int startIdx = (player - 1) * CellCount / 2;
+        int endIdx = player * CellCount / 2;
+        for (int i = startIdx; i < endIdx; i++)
+        {
+            cellTransforms[i].GetComponent<CellManager>().cellState = CellState.Empty;
+        }
     }
 }

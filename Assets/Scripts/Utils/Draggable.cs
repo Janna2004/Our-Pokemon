@@ -9,10 +9,12 @@ public class Draggable : MonoBehaviour
     private Vector3 offset = Vector3.zero;
     private float zCoord;
     private DragAction dragAction;
+    private CardController cardController;
 
     private void Awake()
     {
         dragAction = GetComponent<DragAction>();
+        cardController = GetComponent<CardController>();
     }
 
     // Start is called before the first frame update
@@ -47,6 +49,10 @@ public class Draggable : MonoBehaviour
                 offset = Vector3.zero;
             }
             dragAction.OnStartDrag();
+        }
+        else
+        {
+            cardController.ShakeCard();
         }
     }
 
