@@ -15,8 +15,16 @@ public class DragCard : DragAction
 
     private void Start()
     {
-        boardManager = BoardManager.instance;
+        boardController = BoardManager.instance.boardController;
         cardController = GetComponent<CardController>();
+    }
+
+    public override bool CanDrag
+    {
+        get
+        {
+            return cardController.IsOnBoard() || boardController.CanAddCard(cardController.owner, cardController.cardAsset.level);
+        }
     }
 
     public override void OnStartDrag()
@@ -25,7 +33,7 @@ public class DragCard : DragAction
         gameObject.layer = 2;
         startPos = transform.position;
         transform.DOScale(1.2f, 0.5f);
-        startCellIdx = boardManager.boardController.OnCardStartDrag(transform);
+        startCellIdx = boardController.OnCardStartDrag(transform);
         cardController.RotateToFront(false);
     }
 
@@ -34,7 +42,7 @@ public class DragCard : DragAction
         // 调回default层
         gameObject.layer = 0;
         transform.DOScale(1f, 0.5f);
-        if (!boardManager.boardController.OnCardEndDrag(transform, startCellIdx))
+        if (!boardController.OnCardEndDrag(transform, startCellIdx))
         {
             source.PlayOneShot(fail);
             transform.DOMove(startPos, 0.5f);
