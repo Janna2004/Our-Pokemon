@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,11 +7,15 @@ namespace PixelsoftGames.PixelUI
     [RequireComponent(typeof(Button))]
     public class ErrorWindow : MonoBehaviour
     {
+        public AudioClip buttonClickSound; // 用于播放的音效
+        private AudioSource audioSource;
+
         #region Fields & Properties
 
         [SerializeField]
         [Tooltip("The dialogue window prefab to spawn")]
         GameObject DialoguePrefab;
+
 
         GameObject dialogueInstance = null;
         Button button;
@@ -24,6 +27,7 @@ namespace PixelsoftGames.PixelUI
         private void Awake()
         {
             button = GetComponent<Button>();
+            audioSource = gameObject.AddComponent<AudioSource>(); // 初始化 AudioSource
         }
 
         private void OnDestroy()
@@ -47,6 +51,12 @@ namespace PixelsoftGames.PixelUI
             if (dialogueInstance != null)
             {
                 Destroy(dialogueInstance);
+            }
+
+            // 播放音效
+            if (buttonClickSound != null)
+            {
+                audioSource.PlayOneShot(buttonClickSound);
             }
 
             Transform canvas = GameObject.Find("Canvas")?.transform;

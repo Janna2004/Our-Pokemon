@@ -15,8 +15,15 @@ MonoBehaviour:
   pokemonName: "\u76AE\u5361\u4E18"
   pokemonImg: {fileID: 21300000, guid: 6edb470d340cebc4aa5edca04d22756f, type: 3}
   elemental: 3
-  skills: []
+  activeSkill: 0
+  passiveSkill: 0
   hp: 8
   attack: 7
   level: 2
-  attackRange: []
+  attackRange:
+  - {x: 1, y: 1}
+  - {x: -1, y: 1}
+  - {x: -1, y: -1}
+  - {x: 1, y: -1}
+  - {x: 2, y: 0}
+  - {x: -2, y: 0}

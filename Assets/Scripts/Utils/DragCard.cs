@@ -4,6 +4,10 @@ using DG.Tweening;
 
 public class DragCard : DragAction
 {
+    public AudioClip success;
+    public AudioClip fail;
+    public AudioSource source;
+
     private BoardManager boardManager;
     private CardController cardController;
     private Vector3 startPos;
@@ -17,7 +21,7 @@ public class DragCard : DragAction
 
     public override void OnStartDrag()
     {
-        // µ÷ÈëignoreRaycast²ã£¬±ÜÃâÍÏ×§Ê±±»ÕÚµ²
+        // è°ƒå…¥ignoreRaycastå±‚ï¼Œé¿å…æ‹–æ‹½æ—¶è¢«é®æŒ¡
         gameObject.layer = 2;
         startPos = transform.position;
         transform.DOScale(1.2f, 0.5f);
@@ -27,16 +31,21 @@ public class DragCard : DragAction
 
     public override void OnEndDrag()
     {
-        // µ÷»Ødefault²ã
+        // è°ƒå›defaultå±‚
         gameObject.layer = 0;
         transform.DOScale(1f, 0.5f);
         if (!boardManager.boardController.OnCardEndDrag(transform, startCellIdx))
         {
+            source.PlayOneShot(fail);
             transform.DOMove(startPos, 0.5f);
         }
-        else if (!cardController.IsOnBoard())
+        else
         {
-            cardController.SetOnBoard(true);
+            source.PlayOneShot(success);
+            if (!cardController.IsOnBoard())
+            {
+                cardController.SetOnBoard(true);
+            }
         }
         cardController.RotateToFront(true);
     }

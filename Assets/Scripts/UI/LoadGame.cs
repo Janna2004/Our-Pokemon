@@ -5,6 +5,15 @@ namespace PixelsoftGames.PixelUI
 {
     public class LoadGame : MonoBehaviour
     {
+        public AudioClip buttonSound; // 用于播放的音效
+        private AudioSource audioSource;
+
+        void Start()
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.clip = buttonSound;
+        }
+
         #region Fields & Properties
 
         [SerializeField]
@@ -20,12 +29,16 @@ namespace PixelsoftGames.PixelUI
         /// </summary>
         public void On_Click()
         {
-            if (sceneToLoad != string.Empty)
-            {
-                SceneManager.LoadScene(sceneToLoad);
-            }
+            audioSource.Play();
+            Invoke("LoadNextScene", buttonSound.length);
+        }
+
+        void LoadNextScene()
+        {
+            SceneManager.LoadScene(sceneToLoad); // 更改为目标场景名称
         }
 
         #endregion Callbacks
+
     }
 }

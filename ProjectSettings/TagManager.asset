@@ -60,3 +60,6 @@ TagManager:
   - name: edge
     uniqueID: 955635621
     locked: 0
+  - name: select
+    uniqueID: 3582073169
+    locked: 0
