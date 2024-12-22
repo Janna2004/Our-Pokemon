@@ -18,8 +18,8 @@ public class SkyController : MonoBehaviour
     private Transform layer01, layer02, layer03; // 动态绑定的子层
 
     private float time = 0f; // 用于正弦函数的时间变量
-    private const float floatSpeed = 10f; // 浮动速度
-    private const float floatAmplitude = 4f; // 浮动振幅
+    private const float floatSpeed = 1f; // 浮动速度
+    private const float floatAmplitude = 0.05f; // 浮动振幅
 
     void Start()
     {
@@ -62,14 +62,14 @@ public class SkyController : MonoBehaviour
             if (layer02 != null)
             {
                 Vector3 pos = layer02.localPosition;
-                pos.y = Mathf.Sin(time * floatSpeed) * floatAmplitude;
+                pos.y = layer02.localPosition.y + Mathf.Sin(time * floatSpeed) * floatAmplitude;
                 layer02.localPosition = pos;
             }
 
             if (layer03 != null)
             {
                 Vector3 pos = layer03.localPosition;
-                pos.y = Mathf.Sin(time * floatSpeed) * floatAmplitude;
+                pos.y = layer03.localPosition.y - Mathf.Sin(time * floatSpeed) * floatAmplitude;
                 layer03.localPosition = pos;
             }
         }
@@ -82,7 +82,7 @@ public class SkyController : MonoBehaviour
                 if (renderer != null)
                 {
                     Color color = renderer.material.color;
-                    color.a = (Mathf.Sin(time * floatSpeed) + 1) / 2; // 将透明度值限制在 0 到 1 之间
+                    color.a = (Mathf.Sin(time * floatSpeed * 2 / 3) + 1) / 2; // 将透明度值限制在 0 到 1 之间
                     renderer.material.color = color;
                 }
             }
