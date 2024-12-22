@@ -29,7 +29,7 @@ public class RandomMapGenerator : MonoBehaviour
         boardManager = BoardManager.instance;
         GenerateMapData(); // 生成地图数据
         RenderMap();       // 绘制地图
-        boardManager.UpdateCells(mapData);
+        boardManager.boardController.UpdateCells(mapData);
     }
 
     // 生成地图数据
@@ -101,7 +101,6 @@ public class RandomMapGenerator : MonoBehaviour
             }
         }
     }
-
 
     // 在边缘放置随机树
     private void PlaceEdgeTrees()

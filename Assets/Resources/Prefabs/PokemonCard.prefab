@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 8501793961263276168}
   - component: {fileID: 6711758672138838847}
   - component: {fileID: 9073035506341139651}
-  - component: {fileID: 6713678465907845469}
+  - component: {fileID: 6393714772719885073}
   - component: {fileID: 831780390238790565}
   - component: {fileID: 6895372840490395697}
   - component: {fileID: 5984147358031505718}
@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardAsset: {fileID: 11400000, guid: 0318cace811a22a4f8bd3a6ff2f8312c, type: 2}
---- !u!114 &6713678465907845469
+--- !u!114 &6393714772719885073
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -263,9 +263,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2377057630135298558}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2084b535a7bb034459ef756d0a02dde6, type: 3}
+  m_Script: {fileID: 11500000, guid: 452f28d25952c61418b8feb5e275e6f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFront: 1
   cardFront: {fileID: 5358169115161711519}
   cardBack: {fileID: 195563044600944805}
 --- !u!114 &831780390238790565
@@ -596,7 +597,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 1e95a45065e2bfc439809d3f425fb8d0, type: 2}
-    m_FontSize: 1
+    m_FontSize: 5
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1

@@ -8,10 +8,10 @@ namespace PixelsoftGames.PixelUI
         #region Fields & Properties
 
         [SerializeField]
-        [Tooltip("The index of the scene to load on click.")]
-        int indexToLoad = -1;
+        [Tooltip("The name of the scene to load on click.")]
+        private string sceneToLoad = string.Empty;
 
-        #endregion
+        #endregion Fields & Properties
 
         #region Callbacks
 
@@ -20,12 +20,12 @@ namespace PixelsoftGames.PixelUI
         /// </summary>
         public void On_Click()
         {
-            if (indexToLoad == -1)
-                return;
-
-            SceneManager.LoadScene(indexToLoad);
+            if (sceneToLoad != string.Empty)
+            {
+                SceneManager.LoadScene(sceneToLoad);
+            }
         }
 
-        #endregion
+        #endregion Callbacks
     }
 }

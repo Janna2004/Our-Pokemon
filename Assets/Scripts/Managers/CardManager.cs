@@ -11,23 +11,12 @@ public class CardManager : MonoBehaviour
     private Sprite pokemonImg;
     private Elemental elemental;
     private Sprite bgSprite;
-    private string[] skills;
+    private ActiveSkill activeSkill;
+    private PassiveSkill passiveSkill;
     private int hp;
     private int attack;
     private int level;
-
-    // 初始化卡片信息
-    public void InitCardInfo()
-    {
-        pokemonName = cardAsset.pokemonName;
-        pokemonImg = cardAsset.pokemonImg;
-        elemental = cardAsset.elemental;
-        bgSprite = Resources.Load<Sprite>(ElementalImg.imgPath[elemental]);
-        skills = cardAsset.skills;
-        hp = cardAsset.hp;
-        attack = cardAsset.attack;
-        level = cardAsset.level;
-    }
+    private List<Vector2Int> attackRange;
 
     // Awake is called when the script instance is being loaded
     private void Awake()
@@ -37,6 +26,32 @@ public class CardManager : MonoBehaviour
 
     // Start is called before the first frame update
     private void Start()
+    {
+        LoadCardUI();
+    }
+
+    // Update is called once per frame
+    private void Update()
+    {
+    }
+
+    // 初始化卡片信息
+    public void InitCardInfo()
+    {
+        pokemonName = cardAsset.pokemonName;
+        pokemonImg = cardAsset.pokemonImg;
+        elemental = cardAsset.elemental;
+        bgSprite = Resources.Load<Sprite>(ElementalImg.imgPath[elemental]);
+        activeSkill = cardAsset.activeSkill;
+        passiveSkill = cardAsset.passiveSkill;
+        hp = cardAsset.hp;
+        attack = cardAsset.attack;
+        level = cardAsset.level;
+        attackRange = cardAsset.attackRange;
+    }
+
+    // 加载卡片UI
+    public void LoadCardUI()
     {
         // 根据元素属性设置卡片图片
         Image pokemon = transform.Find("CardPanel/CardFront/pokemon").GetComponent<Image>();
@@ -54,10 +69,5 @@ public class CardManager : MonoBehaviour
         // 设置卡片背面的文字信息
         Text levelText = transform.Find("CardPanel/CardBack/level").GetComponent<Text>();
         levelText.text = "Lv." + level;
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
     }
 }
