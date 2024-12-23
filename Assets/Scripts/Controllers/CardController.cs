@@ -30,10 +30,12 @@ public class CardController : MonoBehaviour
         if (gameManager.curPlayer != owner)
         {
             transform.rotation = Quaternion.Euler(0, 0, 180);
+            GetComponent<Canvas>().sortingOrder = 2;
         }
         else
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
+            GetComponent<Canvas>().sortingOrder = 1;
         }
     }
 
