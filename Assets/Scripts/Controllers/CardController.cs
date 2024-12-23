@@ -31,6 +31,10 @@ public class CardController : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, 0, 180);
         }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
     }
 
     // º”‘ÿø®∆¨UI

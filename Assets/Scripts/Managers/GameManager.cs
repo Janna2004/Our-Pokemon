@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
         {
             BoardManager.instance.boardController.BlockArea(curPlayer);
             BoardManager.instance.boardController.UnblockArea(oldPlayer);
+            BoardManager.instance.boardController.ResetSelect(curPlayer);
             preparedPlayer += 1;
         }
         else if (curPlayer == 1)

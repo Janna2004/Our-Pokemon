@@ -24,7 +24,11 @@ public class DragCard : DragAction
     {
         get
         {
-            return cardController.IsOnBoard() || boardController.CanAddCard(cardController.owner, cardController.cardAsset.level);
+            if (!cardController.IsOnBoard() && !boardController.CanAddCard(cardController.owner, cardController.cardAsset.level))
+            {
+                return false;
+            }
+            return true;
         }
     }
 
