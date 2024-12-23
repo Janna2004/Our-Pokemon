@@ -15,7 +15,7 @@ public class BoardController : MonoBehaviour
     public int[] maxCardNumInLevel;
     public GameObject SelectPrefab;
     private Object SelectInstance;
-    private readonly Dictionary<CellManager, CellState> AttackableCells = new();
+    private readonly List<CellManager> AttackableCells = new();
     private readonly Dictionary<CellManager, CellState> MovableCells = new();
 
     // Awake is called when the script instance is being loaded.
@@ -104,6 +104,7 @@ public class BoardController : MonoBehaviour
 
         if (!CanCardOnCell(cardTransform, cellIdx) || cellIdx == startCellIdx)
         {
+            ClearAttackRange();
             ClearMovable();
             return false;
         }
@@ -241,7 +242,7 @@ public class BoardController : MonoBehaviour
             {
                 int cellIdx = targetY * boardSize + targetX;
                 CellManager cellManager = cellTransforms[cellIdx].GetComponent<CellManager>();
-                AttackableCells.Add(cellManager, cellManager.cellState);
+                AttackableCells.Add(cellManager);
                 cellManager.attackable = true;
             }
         }
@@ -249,10 +250,9 @@ public class BoardController : MonoBehaviour
 
     public void ClearAttackRange()
     {
-        foreach (KeyValuePair<CellManager, CellState> entry in AttackableCells)
+        foreach (CellManager item in AttackableCells)
         {
-            entry.Key.cellState = entry.Value;
-            entry.Key.attackable = false;
+            item.attackable = false;
         }
         AttackableCells.Clear();
     }
