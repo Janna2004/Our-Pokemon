@@ -4457,7 +4457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellSize: 40
   boardSize: 8
-  maxCardNumInLevel: 00000000030000000200000001000000
+  maxCardNumInLevel: 00000000000000000000000001000000
   SelectPrefab: {fileID: 6536768364546637043, guid: 5b4ad4fb8908d65428e03991835a4c93, type: 3}
 --- !u!1001 &1387537582
 PrefabInstance:

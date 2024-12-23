@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using System.Diagnostics;
 using UnityEngine;
 
 public class SkyController : MonoBehaviour
@@ -21,45 +21,25 @@ public class SkyController : MonoBehaviour
     private const float floatSpeed = 1f; // 浮动速度
     private const float floatAmplitude = 0.05f; // 浮动振幅
 
-    // 输入参数 - 游戏主流程
-    public GameManager gameManager;
-
-    void Start()
+    private void Awake()
     {
-        // 随机选择 morning、afternoon 或 night
-        int randomIndex = Random.Range(0, 3);
-
-        switch (randomIndex)
+        if (GameManager.instance != null)
         {
-            case 0:
-                selectedSky = morning;
-                layer01 = morningLayer01;
-                layer02 = morningLayer02;
-                layer03 = morningLayer03;
-                break;
-            case 1:
-                selectedSky = afternoon;
-                layer01 = afternoonLayer01;
-                layer02 = afternoonLayer02;
-                layer03 = afternoonLayer03;
-                break;
-            case 2:
-                selectedSky = night;
-                layer01 = nightLayer01;
-                layer02 = nightLayer02;
-                break;
+            GameManager.instance.OnSkyStateChange += HandleSkyStateChange;
+            UnityEngine.Debug.Log("SkyController successfully subscribed to OnSkyStateChange in Awake.");
         }
-
-        // 激活选中的对象，其他的隐藏
-        morning.SetActive(selectedSky == morning);
-        afternoon.SetActive(selectedSky == afternoon);
-        night.SetActive(selectedSky == night);
-
-        // 修改天空状态
-        gameManager.UpdateSkyState(randomIndex); // 更新 GameManager 中的 Sky 状态
     }
 
-    void Update()
+    private void OnDestroy()
+    {
+        // 取消订阅事件，防止内存泄漏
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.OnSkyStateChange -= HandleSkyStateChange;
+        }
+    }
+
+    private void Update()
     {
         time += Time.deltaTime; // 更新时间变量
 
@@ -89,10 +69,46 @@ public class SkyController : MonoBehaviour
                 if (renderer != null)
                 {
                     Color color = renderer.material.color;
-                    color.a = (Mathf.Sin(time * floatSpeed *  3 / 4) + 1) / 2; // 将透明度值限制在 0 到 1 之间
+                    color.a = (Mathf.Sin(time * floatSpeed * 3 / 4) + 1) / 2; // 将透明度值限制在 0 到 1 之间
                     renderer.material.color = color;
                 }
             }
         }
+    }
+
+    // 处理 Sky 状态变化
+    private void HandleSkyStateChange(int skyState)
+    {
+        UnityEngine.Debug.Log($"SkyController received skyState: {skyState}"); // 检查是否收到了事件。
+
+        // 根据 skyState 激活指定的 Sky 对象
+        switch (skyState)
+        {
+            case 0:
+                selectedSky = morning;
+                layer01 = morningLayer01;
+                layer02 = morningLayer02;
+                layer03 = morningLayer03;
+                break;
+            case 1:
+                selectedSky = afternoon;
+                layer01 = afternoonLayer01;
+                layer02 = afternoonLayer02;
+                layer03 = afternoonLayer03;
+                break;
+            case 2:
+                selectedSky = night;
+                layer01 = nightLayer01;
+                layer02 = nightLayer02;
+                layer03 = null;
+                break;
+        }
+
+        UnityEngine.Debug.Log($"Selected sky: {selectedSky.name}"); // 确认选中的天空对象。
+
+        // 激活选中的对象，其他的隐藏
+        morning.SetActive(selectedSky == morning);
+        afternoon.SetActive(selectedSky == afternoon);
+        night.SetActive(selectedSky == night);
     }
 }

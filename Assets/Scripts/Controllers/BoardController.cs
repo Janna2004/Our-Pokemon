@@ -74,7 +74,7 @@ public class BoardController : MonoBehaviour
     public void ResetSelect()
     {
         DestroySelect();
-        // »ñÈ¡³¡¾°µÄ¸ùÎïÌå×÷Îª¸¸ÎïÌå
+        // è·å–åœºæ™¯çš„æ ¹ç‰©ä½“ä½œä¸ºçˆ¶ç‰©ä½“
         Scene boardScene = SceneManager.GetSceneByName("BoardScene");
         SelectInstance = Instantiate(SelectPrefab, boardScene);
     }
@@ -98,32 +98,41 @@ public class BoardController : MonoBehaviour
         return cellIdx;
     }
 
-    public bool OnCardEndDrag(Transform cardTransform, int startCellIdx)
+    public bool[] OnCardEndDrag(Transform cardTransform, int startCellIdx)
     {
         int cellIdx = GetCellIdxByPointer();
+        bool isAttack = false;
 
         if (!CanCardOnCell(cardTransform, cellIdx) || cellIdx == startCellIdx)
         {
             ClearAttackRange();
             ClearMovable();
-            return false;
+            return new bool[] { isAttack, false };
         }
+
         if (!EmptyAtIdx(cellIdx))
         {
-            OnAttack(startCellIdx, cellIdx);
+            // æ‰§è¡Œæ”»å‡»é€»è¾‘
+            isAttack = OnAttack(startCellIdx, cellIdx);
             ClearAttackRange();
             ClearMovable();
-            return false;
+            return new bool[] { isAttack, false };
         }
+
         ClearAttackRange();
         ClearMovable();
+
         if (startCellIdx != -1)
         {
+            // æ¸…ç©ºèµ·å§‹å•å…ƒæ ¼çŠ¶æ€
             CellManager startCellManager = cellTransforms[startCellIdx].GetComponent<CellManager>();
             startCellManager.cardTransform = null;
             startCellManager.cellState = CellState.Empty;
         }
-        return AddCard(cardTransform, cellIdx);
+
+        // æ·»åŠ å¡ç‰‡åˆ°æ–°çš„å•å…ƒæ ¼
+        bool isAddCardSuccessful = AddCard(cardTransform, cellIdx);
+        return new bool[] { isAttack, isAddCardSuccessful };
     }
 
     public bool CanCardOnCell(Transform cardTransform, int cellIdx)
@@ -149,7 +158,7 @@ public class BoardController : MonoBehaviour
     private bool AddCard(Transform cardTransform, int cellIdx)
     {
         cardTransform.SetParent(cellTransforms[cellIdx]);
-        // ÖØÖÃ¿¨ÅÆÎ»ÖÃµ½µ¥Ôª¸ñÖĞĞÄ
+        // é‡ç½®å¡ç‰Œä½ç½®åˆ°å•å…ƒæ ¼ä¸­å¿ƒ
         cardTransform.localPosition = Vector3.zero;
         CellManager cellManager = cellTransforms[cellIdx].GetComponent<CellManager>();
         cellManager.cardTransform = cardTransform;
@@ -157,7 +166,7 @@ public class BoardController : MonoBehaviour
         return true;
     }
 
-    // Ìí¼Ó¿¨Æ¬µ½ÆåÅÌ
+    // æ·»åŠ å¡ç‰‡åˆ°æ£‹ç›˜
     public void AddCardForPlayer(byte player, int level)
     {
         cardNumEachPlayer[player, level]++;
@@ -176,7 +185,7 @@ public class BoardController : MonoBehaviour
         }
     }
 
-    // ´ÓÆåÅÌÒÆ³ı¿¨Æ¬
+    // ä»æ£‹ç›˜ç§»é™¤å¡ç‰‡
     public void RemoveCardForPlayer(byte player, int level)
     {
         cardNumEachPlayer[player, level]--;
@@ -200,20 +209,20 @@ public class BoardController : MonoBehaviour
         return cardNumEachPlayer[player, level] < maxCardNumInLevel[level];
     }
 
-    private void OnAttack(int startCellIdx, int cellIdx)
+    private bool OnAttack(int startCellIdx, int cellIdx)
     {
         Transform startCellTransform = cellTransforms[startCellIdx];
         Transform cellTransform = cellTransforms[cellIdx];
         CellManager targetCellManager = cellTransform.GetComponent<CellManager>();
         if (targetCellManager.cellState != CellState.Occupied || !targetCellManager.attackable)
         {
-            return;
+            return false;
         }
         CardController startCardController = startCellTransform.GetComponent<CellManager>().cardTransform.GetComponent<CardController>();
         CardController cardController = cellTransform.GetComponent<CellManager>().cardTransform.GetComponent<CardController>();
         if (startCardController.owner == cardController.owner)
         {
-            return;
+            return false;
         }
         gameManager.NextMove();
         int attackDemage = startCardController.cardAsset.attack;
@@ -222,6 +231,7 @@ public class BoardController : MonoBehaviour
             RemoveCardForPlayer(cardController.owner, cardController.cardAsset.level);
             cellTransform.GetComponent<CellManager>().cellState = CellState.Blocked;
         }
+        return true;
     }
 
     public void ShowAttackRange(Transform cardTransform, int centerIdx)
@@ -337,7 +347,7 @@ public class BoardController : MonoBehaviour
         return row * boardSize + col;
     }
 
-    // ½ûÓÃÖ¸¶¨Î»ÖÃµÄµ¥Ôª¸ñ
+    // ç¦ç”¨æŒ‡å®šä½ç½®çš„å•å…ƒæ ¼
     public void BlockArea(byte player)
     {
         int startIdx = (player - 1) * CellCount / 2;
@@ -351,7 +361,7 @@ public class BoardController : MonoBehaviour
         }
     }
 
-    // ÆôÓÃÖ¸¶¨Î»ÖÃµÄµ¥Ôª¸ñ
+    // å¯ç”¨æŒ‡å®šä½ç½®çš„å•å…ƒæ ¼
     public void UnblockArea(byte player)
     {
         int startIdx = (player - 1) * CellCount / 2;

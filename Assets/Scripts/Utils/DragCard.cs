@@ -6,6 +6,7 @@ public class DragCard : DragAction
 {
     public AudioClip success;
     public AudioClip fail;
+    public AudioClip attack;
     public AudioSource source;
     private GameManager gameManager;
     private BoardManager boardManager;
@@ -56,14 +57,16 @@ public class DragCard : DragAction
         // 调回default层
         gameObject.layer = 0;
         transform.DOScale(1f, 0.5f);
-        if (!boardController.OnCardEndDrag(transform, startCellIdx))
+
+        // 调用 OnCardEndDrag 一次，并获取返回的结果
+        bool[] result = boardController.OnCardEndDrag(transform, startCellIdx);
+        bool isAttack = result[0]; // 是否是攻击
+        bool isSuccess = result[1]; // 是否成功
+
+        // 根据操作结果播放对应的音效
+        if (isSuccess)
         {
-            source.PlayOneShot(fail);
-            transform.DOMove(startPos, 0.5f);
-        }
-        else
-        {
-            source.PlayOneShot(success);
+            source.PlayOneShot(success); // 播放成功音效
             if (!cardController.IsOnBoard())
             {
                 cardController.SetOnBoard(true);
@@ -73,6 +76,20 @@ public class DragCard : DragAction
                 gameManager.NextMove();
             }
         }
+        else
+        {
+            if (isAttack)
+            {
+                source.PlayOneShot(attack); // 播放攻击音效
+            }
+            else
+            {
+                source.PlayOneShot(fail); // 播放失败音效
+            }
+            transform.DOMove(startPos, 0.5f); // 移动回原始位置
+        }
+
+        // 翻转卡片到正面
         cardController.RotateToFront(true);
     }
 

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Diagnostics;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace PixelsoftGames.PixelUI
@@ -29,12 +30,14 @@ namespace PixelsoftGames.PixelUI
         /// </summary>
         public void On_Click()
         {
+            UnityEngine.Debug.Log("Button Clicked");
             audioSource.Play();
             Invoke("LoadNextScene", buttonSound.length);
         }
 
         void LoadNextScene()
         {
+            UnityEngine.Debug.Log("Loading Scene");
             SceneManager.LoadScene(sceneToLoad); // 更改为目标场景名称
         }
 
