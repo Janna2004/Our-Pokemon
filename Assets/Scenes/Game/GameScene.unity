@@ -213,6 +213,7 @@ GameObject:
   - component: {fileID: 337503884}
   - component: {fileID: 337503883}
   - component: {fileID: 337503885}
+  - component: {fileID: 337503886}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -264,11 +265,15 @@ MonoBehaviour:
   turnCount: 0
   moveCount: 0
   maxMoveNum: 3
-  sourceAudio: {fileID: 337503885}
   morningAudio: {fileID: 8300000, guid: d90f5528bfcdfd943aa0fde856d35f68, type: 3}
   afternoonAudio: {fileID: 8300000, guid: f3633be58496da249af0c5805005b13a, type: 3}
   nightAudio: {fileID: 8300000, guid: 26be8a787bc61c84ab767cec57851530, type: 3}
   selectAudio: {fileID: 8300000, guid: 892264966f600074a83f251dc97248ee, type: 3}
+  backgroundSourceAudio: {fileID: 337503885}
+  SFXSourceAudio: {fileID: 337503886}
+  startAudio: {fileID: 8300000, guid: f6c670b642ce42c43b62d09eb9a99ccb, type: 3}
+  switchAudio: {fileID: 8300000, guid: ed2092e87e0a66346af3146cca0b66bb, type: 3}
+  winAudio: {fileID: 8300000, guid: f5a80b529b69cf3499847a6038fe9c7b, type: 3}
 --- !u!82 &337503885
 AudioSource:
   m_ObjectHideFlags: 0
@@ -282,6 +287,102 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.3
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &337503886
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337503881}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -607,6 +708,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1193377529}
   - component: {fileID: 1193377528}
+  - component: {fileID: 1193377530}
   - component: {fileID: 1193377527}
   m_Layer: 0
   m_Name: Main Camera
@@ -689,6 +791,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1193377530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193377526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8658ba4ca31cb304cad91ba5626bc7a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preparePosition: {x: -60, y: 0, z: -10}
+  playingPosition: {x: 0, y: 0, z: -10}
+  transitionDuration: 0.8
 --- !u!1 &1227668921
 GameObject:
   m_ObjectHideFlags: 0
