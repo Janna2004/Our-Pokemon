@@ -21,10 +21,14 @@ public class SkyController : MonoBehaviour
     private const float floatSpeed = 1f; // 浮动速度
     private const float floatAmplitude = 0.05f; // 浮动振幅
 
+    // 输入参数 - 游戏主流程
+    public GameManager gameManager;
+
     void Start()
     {
         // 随机选择 morning、afternoon 或 night
         int randomIndex = Random.Range(0, 3);
+
         switch (randomIndex)
         {
             case 0:
@@ -50,6 +54,9 @@ public class SkyController : MonoBehaviour
         morning.SetActive(selectedSky == morning);
         afternoon.SetActive(selectedSky == afternoon);
         night.SetActive(selectedSky == night);
+
+        // 修改天空状态
+        gameManager.UpdateSkyState(randomIndex); // 更新 GameManager 中的 Sky 状态
     }
 
     void Update()
@@ -82,7 +89,7 @@ public class SkyController : MonoBehaviour
                 if (renderer != null)
                 {
                     Color color = renderer.material.color;
-                    color.a = (Mathf.Sin(time * floatSpeed * 2 / 3) + 1) / 2; // 将透明度值限制在 0 到 1 之间
+                    color.a = (Mathf.Sin(time * floatSpeed *  3 / 4) + 1) / 2; // 将透明度值限制在 0 到 1 之间
                     renderer.material.color = color;
                 }
             }

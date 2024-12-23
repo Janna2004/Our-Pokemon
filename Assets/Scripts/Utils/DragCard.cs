@@ -26,6 +26,7 @@ public class DragCard : DragAction
         {
             if (!cardController.IsOnBoard() && !boardController.CanAddCard(cardController.owner, cardController.cardAsset.level))
             {
+                source.PlayOneShot(fail);
                 return false;
             }
             return true;

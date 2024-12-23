@@ -21,18 +21,38 @@ public class GameManager : MonoBehaviour
     public int maxMoveNum = 3;
     private int preparedPlayer = 0;
 
+    public AudioSource sourceAudio; // 用于播放背景音乐
+    // 输入参数 - 各个 Sky 对应的音频
+    public AudioClip morningAudio;
+    public AudioClip afternoonAudio;
+    public AudioClip nightAudio;
+    private int skySelected = 0; // 选择的 Sky 对象
+
+    // 输入参数 - 准备音乐
+    public AudioClip selectAudio;
+
     // Awake is called when the script instance is being loaded.
     private void Awake()
     {
         instance = this;
-        // ���س���
+        // 加载场景
         SceneManager.LoadScene("GroundScene", LoadSceneMode.Additive);
         SceneManager.LoadScene("BoardScene", LoadSceneMode.Additive);
+    }
+
+    public void UpdateSkyState(int skyState)
+    {
+        skySelected = skyState;
     }
 
     // Start is called before the first frame update
     private void Start()
     {
+        // 播放准备音乐
+        sourceAudio.clip = selectAudio;
+        sourceAudio.loop = true;
+        sourceAudio.Play();
+
         SwitchPlayer();
     }
 
@@ -41,7 +61,7 @@ public class GameManager : MonoBehaviour
     {
     }
 
-    // �л����
+    // 切换玩家
     public void SwitchPlayer()
     {
         byte oldPlayer = curPlayer;
@@ -64,13 +84,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // ��һ�غ�
+    // 下一回合
     public void NextTurn()
     {
         turnCount++;
     }
 
-    // ��һ�ж�
+    // 下一行动
     public bool NextMove()
     {
         moveCount++;
@@ -82,23 +102,50 @@ public class GameManager : MonoBehaviour
         return true;
     }
 
-    // ��ʼ��Ϸ
+    // 开始游戏
     public void StartGame()
     {
         gameState = GameState.Playing;
+
+        // 停止准备音乐
+        sourceAudio.Stop();
+
+        // 根据 skySelected 播放对应的背景音乐
+        switch (skySelected)
+        {
+            case 0:
+                sourceAudio.clip = morningAudio;
+                break;
+            case 1:
+                sourceAudio.clip = afternoonAudio;
+                break;
+            case 2:
+                sourceAudio.clip = nightAudio;
+                break;
+        }
+
+        sourceAudio.loop = true; // 设置音乐循环播放
+        sourceAudio.Play();
+
         BoardManager.instance.boardController.BlockArea(1);
         BoardManager.instance.boardController.BlockArea(2);
     }
 
-    // ��ͣ��Ϸ
+    // 暂停游戏
     public void PauseGame()
     {
         gameState = GameState.Pause;
+
+        // 停止播放任何音乐
+        sourceAudio.Stop();
     }
 
-    // ������Ϸ
+    // 结束游戏
     public void EndGame()
     {
         gameState = GameState.End;
+
+        // 停止播放任何音乐
+        sourceAudio.Stop();
     }
 }
