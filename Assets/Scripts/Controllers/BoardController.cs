@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,6 +15,8 @@ public class BoardController : MonoBehaviour
     public int[] maxCardNumInLevel;
     public GameObject SelectPrefab;
     private Object SelectInstance;
+    private readonly Dictionary<CellManager, CellState> AttackableCells = new();
+    private readonly Dictionary<CellManager, CellState> MovableCells = new();
 
     // Awake is called when the script instance is being loaded.
     private void Awake()
@@ -87,24 +90,36 @@ public class BoardController : MonoBehaviour
     public int OnCardStartDrag(Transform cardTransform)
     {
         int cellIdx = GetCellIdxByPointer();
+        if (gameManager.gameState == GameState.Playing)
+        {
+            SetMovable(cellIdx);
+            ShowAttackRange(cardTransform, cellIdx);
+        }
         return cellIdx;
     }
 
     public bool OnCardEndDrag(Transform cardTransform, int startCellIdx)
     {
         int cellIdx = GetCellIdxByPointer();
+
         if (!CanCardOnCell(cardTransform, cellIdx) || cellIdx == startCellIdx)
         {
+            ClearMovable();
             return false;
         }
         if (!EmptyAtIdx(cellIdx))
         {
+            OnAttack(startCellIdx, cellIdx);
+            ClearAttackRange();
+            ClearMovable();
             return false;
         }
-
+        ClearAttackRange();
+        ClearMovable();
         if (startCellIdx != -1)
         {
             CellManager startCellManager = cellTransforms[startCellIdx].GetComponent<CellManager>();
+            startCellManager.cardTransform = null;
             startCellManager.cellState = CellState.Empty;
         }
         return AddCard(cardTransform, cellIdx);
@@ -132,14 +147,11 @@ public class BoardController : MonoBehaviour
 
     private bool AddCard(Transform cardTransform, int cellIdx)
     {
-        if (cellIdx == -1 || !EmptyAtIdx(cellIdx))
-        {
-            return false;
-        }
         cardTransform.SetParent(cellTransforms[cellIdx]);
         // 重置卡牌位置到单元格中心
         cardTransform.localPosition = Vector3.zero;
         CellManager cellManager = cellTransforms[cellIdx].GetComponent<CellManager>();
+        cellManager.cardTransform = cardTransform;
         cellManager.cellState = CellState.Occupied;
         return true;
     }
@@ -163,9 +175,131 @@ public class BoardController : MonoBehaviour
         }
     }
 
+    // 从棋盘移除卡片
+    public void RemoveCardForPlayer(byte player, int level)
+    {
+        cardNumEachPlayer[player, level]--;
+        bool allDead = true;
+        for (int i = 1; i <= 3; i++)
+        {
+            if (cardNumEachPlayer[player, i] > 0)
+            {
+                allDead = false;
+                break;
+            }
+        }
+        if (allDead)
+        {
+            gameManager.WinGame(player);
+        }
+    }
+
     public bool CanAddCard(byte player, int level)
     {
         return cardNumEachPlayer[player, level] < maxCardNumInLevel[level];
+    }
+
+    private void OnAttack(int startCellIdx, int cellIdx)
+    {
+        Transform startCellTransform = cellTransforms[startCellIdx];
+        Transform cellTransform = cellTransforms[cellIdx];
+        CellManager targetCellManager = cellTransform.GetComponent<CellManager>();
+        if (targetCellManager.cellState != CellState.Occupied || !targetCellManager.attackable)
+        {
+            return;
+        }
+        CardController startCardController = startCellTransform.GetComponent<CellManager>().cardTransform.GetComponent<CardController>();
+        CardController cardController = cellTransform.GetComponent<CellManager>().cardTransform.GetComponent<CardController>();
+        if (startCardController.owner == cardController.owner)
+        {
+            return;
+        }
+        gameManager.NextMove();
+        int attackDemage = startCardController.cardAsset.attack;
+        if (cardController.OnAttack(attackDemage) <= 0)
+        {
+            RemoveCardForPlayer(cardController.owner, cardController.cardAsset.level);
+            cellTransform.GetComponent<CellManager>().cellState = CellState.Blocked;
+        }
+    }
+
+    public void ShowAttackRange(Transform cardTransform, int centerIdx)
+    {
+        CardController cardController = cardTransform.GetComponent<CardController>();
+        List<Vector2Int> attackRange = cardController.cardAsset.attackRange;
+        for (int i = 0; i < attackRange.Count; i++)
+        {
+            int diffX = attackRange[i].x;
+            int diffY = attackRange[i].y;
+            if (cardController.owner == 1)
+            {
+                diffY = -diffY;
+            }
+            int targetX = centerIdx % boardSize + diffX;
+            int targetY = centerIdx / boardSize + diffY;
+            if (targetX >= 0 && targetX < boardSize && targetY >= 0 && targetY < boardSize)
+            {
+                int cellIdx = targetY * boardSize + targetX;
+                CellManager cellManager = cellTransforms[cellIdx].GetComponent<CellManager>();
+                AttackableCells.Add(cellManager, cellManager.cellState);
+                cellManager.attackable = true;
+            }
+        }
+    }
+
+    public void ClearAttackRange()
+    {
+        foreach (KeyValuePair<CellManager, CellState> entry in AttackableCells)
+        {
+            entry.Key.cellState = entry.Value;
+            entry.Key.attackable = false;
+        }
+        AttackableCells.Clear();
+    }
+
+    public void SetMovable(int centerIdx)
+    {
+        int[] stepX = { -1, 1 };
+        int[] stepY = { -1, 1 };
+        for (int i = 0; i < stepX.Length; i++)
+        {
+            int targetX = centerIdx % boardSize + stepX[i];
+            int targetY = centerIdx / boardSize;
+            if (targetX >= 0 && targetX < boardSize && targetY >= 0 && targetY < boardSize)
+            {
+                int cellIdx = targetY * boardSize + targetX;
+                CellManager cellManager = cellTransforms[cellIdx].GetComponent<CellManager>();
+                if (cellManager.cellState != CellState.Occupied)
+                {
+                    MovableCells.Add(cellManager, cellManager.cellState);
+                    cellManager.cellState = CellState.Empty;
+                }
+            }
+        }
+        for (int i = 0; i < stepY.Length; i++)
+        {
+            int targetX = centerIdx % boardSize;
+            int targetY = centerIdx / boardSize + stepY[i];
+            if (targetX >= 0 && targetX < boardSize && targetY >= 0 && targetY < boardSize)
+            {
+                int cellIdx = targetY * boardSize + targetX;
+                CellManager cellManager = cellTransforms[cellIdx].GetComponent<CellManager>();
+                if (cellManager.cellState != CellState.Occupied)
+                {
+                    MovableCells.Add(cellManager, cellManager.cellState);
+                    cellManager.cellState = CellState.Empty;
+                }
+            }
+        }
+    }
+
+    public void ClearMovable()
+    {
+        foreach (KeyValuePair<CellManager, CellState> entry in MovableCells)
+        {
+            entry.Key.cellState = entry.Value;
+        }
+        MovableCells.Clear();
     }
 
     private bool EmptyAtIdx(int cellIdx)
@@ -210,7 +344,10 @@ public class BoardController : MonoBehaviour
         int endIdx = player * CellCount / 2;
         for (int i = startIdx; i < endIdx; i++)
         {
-            cellTransforms[i].GetComponent<CellManager>().cellState = CellState.Blocked;
+            if (cellTransforms[i].GetComponent<CellManager>().cellState != CellState.Occupied)
+            {
+                cellTransforms[i].GetComponent<CellManager>().cellState = CellState.Blocked;
+            }
         }
     }
 
@@ -221,7 +358,10 @@ public class BoardController : MonoBehaviour
         int endIdx = player * CellCount / 2;
         for (int i = startIdx; i < endIdx; i++)
         {
-            cellTransforms[i].GetComponent<CellManager>().cellState = CellState.Empty;
+            if (cellTransforms[i].GetComponent<CellManager>().cellState != CellState.Occupied)
+            {
+                cellTransforms[i].GetComponent<CellManager>().cellState = CellState.Empty;
+            }
         }
     }
 }

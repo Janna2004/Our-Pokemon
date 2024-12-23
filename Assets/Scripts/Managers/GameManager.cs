@@ -141,11 +141,10 @@ public class GameManager : MonoBehaviour
     }
 
     // 结束游戏
-    public void EndGame()
+    public void WinGame(byte player)
     {
         gameState = GameState.End;
-
-        // 停止播放任何音乐
         sourceAudio.Stop();
+        Debug.Log("Player " + player + " wins!");
     }
 }
