@@ -1,8 +1,5 @@
-using DG.Tweening.Core.Easing;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -71,7 +68,7 @@ public class BoardController : MonoBehaviour
         }
     }
 
-    public void ResetSelect(byte player)
+    public void ResetSelect()
     {
         DestroySelect();
         // 获取场景的根物体作为父物体
