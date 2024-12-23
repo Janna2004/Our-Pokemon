@@ -97,8 +97,9 @@ public class GameManager : MonoBehaviour
     }
 
     // ½áÊøÓÎÏ·
-    public void EndGame()
+    public void WinGame(byte player)
     {
         gameState = GameState.End;
+        Debug.Log("Player " + player + " wins!");
     }
 }

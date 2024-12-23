@@ -7,7 +7,7 @@ public class DragCard : DragAction
     public AudioClip success;
     public AudioClip fail;
     public AudioSource source;
-
+    private GameManager gameManager;
     private BoardManager boardManager;
     private BoardController boardController;
     private CardController cardController;
@@ -16,6 +16,7 @@ public class DragCard : DragAction
 
     private void Start()
     {
+        gameManager = GameManager.instance;
         boardController = BoardManager.instance.boardController;
         cardController = GetComponent<CardController>();
     }
@@ -25,6 +26,10 @@ public class DragCard : DragAction
         get
         {
             if (!cardController.IsOnBoard() && !boardController.CanAddCard(cardController.owner, cardController.cardAsset.level))
+            {
+                return false;
+            }
+            if (cardController.owner != gameManager.curPlayer)
             {
                 return false;
             }
@@ -58,6 +63,10 @@ public class DragCard : DragAction
             if (!cardController.IsOnBoard())
             {
                 cardController.SetOnBoard(true);
+            }
+            else
+            {
+                gameManager.NextMove();
             }
         }
         cardController.RotateToFront(true);

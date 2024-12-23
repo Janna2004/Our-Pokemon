@@ -1019,7 +1019,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1797922018898096, guid: d1086bdb8c797b941a8e00b72210ba49, type: 3}
       propertyPath: m_Name
-      value: Locall Button
+      value: Local Button
       objectReference: {fileID: 0}
     - target: {fileID: 114408196920387822, guid: d1086bdb8c797b941a8e00b72210ba49, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1067,7 +1067,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114441502821554302, guid: d1086bdb8c797b941a8e00b72210ba49, type: 3}
       propertyPath: m_Text
-      value: LOCALL
+      value: LOCAL
       objectReference: {fileID: 0}
     - target: {fileID: 114441502821554302, guid: d1086bdb8c797b941a8e00b72210ba49, type: 3}
       propertyPath: m_FontData.m_Font

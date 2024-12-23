@@ -24,12 +24,34 @@ public class CellColor
     {
         {CellState.Empty, new Color(1, 1, 1, 0.5f)},
         {CellState.Occupied, new Color(1, 0, 0, 0.5f)},
-        {CellState.Blocked, new Color(1, 0, 0, 0.5f)}
+        {CellState.Blocked, new Color(1, 0, 0, 0.5f)},
     };
 }
 
 public class CellManager : MonoBehaviour
 {
+    public Transform cardTransform;
+    private bool _attackable = false;
+
+    public bool attackable
+    {
+        set
+        {
+            if (_attackable != value)
+            {
+                _attackable = value;
+                if (!value)
+                {
+                    cellController.SetFilterActive(false);
+                }
+            }
+        }
+        get
+        {
+            return _attackable;
+        }
+    }
+
     public CellType cellType = CellType.Grass;
     public CellState _cellState = CellState.Empty;
 
@@ -41,6 +63,7 @@ public class CellManager : MonoBehaviour
             {
                 _cellState = value;
                 cellController.SetFilterColor(CellColor.cellColor[_cellState]);
+                cellController.SetFilterActive(false);
             }
         }
         get
@@ -66,6 +89,11 @@ public class CellManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (attackable)
+        {
+            cellController.SetFilterColor(new Color(0, 1, 0, 0.5f));
+            cellController.SetFilterActive(true);
+        }
     }
 
     private void OnMouseEnter()
@@ -75,6 +103,9 @@ public class CellManager : MonoBehaviour
 
     private void OnMouseExit()
     {
-        cellController.SetFilterActive(false);
+        if (!attackable)
+        {
+            cellController.SetFilterActive(false);
+        }
     }
 }

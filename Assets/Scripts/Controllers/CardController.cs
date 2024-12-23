@@ -99,4 +99,17 @@ public class CardController : MonoBehaviour
     {
         transform.DOShakeRotation(0.5f, 10, 50);
     }
+
+    // ¿¨Æ¬±»¹¥»÷
+    public int OnAttack(int attackDemage)
+    {
+        cardAsset.hp -= attackDemage;
+        ShakeCard();
+        LoadCardUI();
+        if (cardAsset.hp <= 0)
+        {
+            Destroy(gameObject);
+        }
+        return cardAsset.hp;
+    }
 }
