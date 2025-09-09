@@ -17,7 +17,7 @@ public enum CellState
     Blocked
 }
 
-// 映射单元格状态和颜色
+// 鏄犲皠鍗曞厓鏍肩姸鎬佸拰棰滆壊
 public class CellColor
 {
     public static Dictionary<CellState, Color> cellColor = new Dictionary<CellState, Color>

@@ -91,7 +91,6 @@ public class GameManager : MonoBehaviour
         if (gameState != newState)
         {
             gameState = newState;
-
             // 触发游戏状态变化事件
             OnGameStateChange?.Invoke(newState);
         }

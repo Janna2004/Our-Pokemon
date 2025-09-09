@@ -19,8 +19,8 @@ public class RandomMapGenerator : MonoBehaviour
     private int mapHeight = 16 + 2; // 地图高度
     private int groupSize = 2; // 每组的大小
 
-    private int minTotlaGroups = 4; // 最小分组数量
-    private int maxTotlaGroups = 8; // 最大分组数量
+    private int minTotlaGroups = 4; // 最小分组数量 4 
+    private int maxTotlaGroups = 8; // 最大分组数量 8
 
     private byte[,] mapData; // 存储地图数据
 
@@ -49,8 +49,8 @@ public class RandomMapGenerator : MonoBehaviour
         // 强制在边缘放置随机树
         PlaceEdgeTrees();
 
-        // 减少水分组和树分组的总数量，同时空出最外圈
-        int totalGroupsX = (mapWidth - 2) / groupSize; // 不包括边缘
+        // 空出最外圈
+        int totalGroupsX = (mapWidth - 2) / groupSize;
         int totalGroupsY = (mapHeight - 2) / groupSize;
 
         int totlaGroups = UnityEngine.Random.Range(minTotlaGroups, maxTotlaGroups); // 总水分组数量
@@ -59,7 +59,6 @@ public class RandomMapGenerator : MonoBehaviour
 
         // 用来标记哪些分组已经被占用
         bool[,] occupiedGroups = new bool[totalGroupsX, totalGroupsY];
-
         // 随机生成水分组
         for (int i = 0; i < waterGroups; i++)
         {
@@ -71,7 +70,6 @@ public class RandomMapGenerator : MonoBehaviour
             {
                 // 标记该分组为已占用
                 occupiedGroups[groupX, groupY] = true;
-
                 GenerateWaterGroup(groupX * groupSize - 1, groupY * groupSize - 1);
             }
             else
@@ -79,7 +77,6 @@ public class RandomMapGenerator : MonoBehaviour
                 i--;
             }
         }
-
         // 随机生成树分组
         for (int i = 0; i < treeGroups; i++)
         {
@@ -92,7 +89,6 @@ public class RandomMapGenerator : MonoBehaviour
             {
                 // 标记该分组为已占用
                 occupiedGroups[groupX, groupY] = true;
-
                 GenerateTreeGroup(groupX * groupSize - 1, groupY * groupSize - 1);
             }
             else
